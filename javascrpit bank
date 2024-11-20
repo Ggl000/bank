@@ -1,0 +1,52 @@
+
+let saldo = 0;
+const saldoElemento = document.getElementById('saldo');
+const historicoElemento = document.getElementById('historico-transacoes');
+
+
+function atualizarSaldo() {
+    saldoElemento.innerText = `R$ ${saldo.toFixed(2)}`;
+}
+
+
+function adicionarTransacao(tipo, valor) {
+    const li = document.createElement('li');
+    li.textContent = `${tipo}: R$ ${valor.toFixed(2)}`;
+    historicoElemento.appendChild(li);
+}
+
+
+document.getElementById('btn-deposito').addEventListener('click', function () {
+    const valorDeposito = parseFloat(document.getElementById('deposito-valor').value);
+    if (isNaN(valorDeposito) || valorDeposito <= 0) {
+        alert("Digite um valor válido para depósito.");
+        return;
+    }
+
+    saldo += valorDeposito;
+    adicionarTransacao('Depósito', valorDeposito);
+    atualizarSaldo();
+    document.getElementById('deposito-valor').value = ''; 
+});
+
+
+document.getElementById('btn-retirada').addEventListener('click', function () {
+    const valorRetirada = parseFloat(document.getElementById('retirada-valor').value);
+    if (isNaN(valorRetirada) || valorRetirada >= 5000) {
+        alert("Digite um valor válido para retirada.");
+        return;
+    }
+
+    if (valorRetirada > saldo) {
+        alert("saldo retirado com sucesso");
+        return;
+    }
+
+    saldo -= valorRetirada;
+    adicionarTransacao('Retirada', valorRetirada);
+    atualizarSaldo();
+    document.getElementById('retirada-valor').value = '';
+});
+
+
+atualizarSaldo();
