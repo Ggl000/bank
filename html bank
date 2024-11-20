@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BanK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bank</h1>
+        </header>
+
+        <section class="saldo">
+            <h2>Saldo Atual: <span id="saldo">R$ 0,00</span></h2>
+        </section>
+
+        <section class="transacoes">
+            <div class="acao">
+                <h3>Depósito</h3>
+                <input type="number" id="deposito-valor" placeholder="Valor do depósito" />
+                <button id="btn-deposito">Depositar</button>
+            </div>
+
+            <div class="acao">
+                <h3>Retirada</h3>
+                <input type="number" id="retirada-valor" placeholder="Valor da retirada" />
+                <button id="btn-retirada">Retirar</button>
+            </div>
+        </section>
+
+        <section class="historico">
+            <h3>Histórico de Transações</h3>
+            <ul id="historico-transacoes">
+               
+            </ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
